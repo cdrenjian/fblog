@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+
+
+{% block main %}
+{% load blog_tags %}
+
+                  <div class="widget widget-archives">
+                    <h3 class="widget-title">归档-所有文章</h3>
+                    {% get_all_posts as post_list %}
+
+                <ul class="archive-list">
+                     {% for post in post_list %}
+
+                            <li class="article-item">
+                                <span class="date">{{ post.create_time }}</span>
+                                <a  class="preview content" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                            </li>
+
+                    {% empty %}
+                    暂无归档
+                    {% endfor %}
+                    
+                </ul>
+{% endblock main %}

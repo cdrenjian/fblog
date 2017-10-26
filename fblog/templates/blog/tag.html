@@ -1,0 +1,24 @@
+﻿
+{% extends "base.html" %}
+
+{% block main %}
+{% load blog_tags %}
+
+            <article class="main tag">
+                <header class="header">
+                    <span class="title">标签</span>
+                </header>
+                <ul class="tag-list">
+
+                    {% get_tags as tags %}
+                     {% for tag in tags %}
+                    <li class="tag-item">
+                        <a class="tag-name" href="{% url 'blog:tag' tag.pk %}">{{ tag.name }}<span class="tag-count"></span></a>
+                    </li>
+
+                    {% endfor %}
+
+                </ul>
+            </article>
+        </article>
+  {% endblock main %}

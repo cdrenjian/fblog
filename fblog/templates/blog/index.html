@@ -1,0 +1,49 @@
+﻿{% extends 'base.html' %}
+{% block main %}
+
+
+  <ul class="article-list">
+                     {% for post in post_list%}
+                    <li class="article">
+                        <a class="title" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                        <section class="preview content"><p>{{ post.excerpt }}</section>
+                        <section class="info">
+                            <a class="name" href="/">{{ post.author }}</a>
+
+                            <span class="date" data-time="{{ post.create_time }}" ><span class="from"> {{ post.create_time}} </span></span>
+
+                            <span class="tags">
+                            {% for tag in post.tags.all %}
+                            <a class="tag" href="{% url 'blog:tag' tag.pk %}">{{ tag.name }}</a>
+                             {% endfor %}
+                            </span>
+                        </section>
+                    </li>
+                  {% empty %}
+                 <h1>暂时没有文章</h1>
+                {% endfor %}
+
+                </ul>
+
+
+                 {% if is_paginated %}
+
+                 <div class="page-nav preview content" font-size="30px">
+                     页码：
+                    {% for page in page_range %}
+
+                     {% if page == page_obj.number %}
+                     <span class="current" style="color: #FF0000">{{ page_obj.number }}</span>
+                     {% elif page == "." %}
+                     <span>{{ page }}</span>
+                     {% else %}
+                     <a href="?page={{ page }}">{{ page }}</a>
+                     {% endif %}
+                {%endfor%}
+                </div>
+                {% endif %}
+
+
+
+
+       {% endblock main%}
