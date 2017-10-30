@@ -1,5 +1,7 @@
 ﻿{% extends 'base.html' %}
-
+{% block title %}
+<title>{{ post.title }}-Forin·博客笔记</title>
+{% endblock title%}
 
 {% block main %}
     {% load blog_tags %}
@@ -17,7 +19,7 @@
             <article class="main article">
                 <h1 class="title">{{ post.title}}</h1>
                 <section class="info">
-                    <a class="name" href="/blog/about.me.html">{{post.author}}</a>
+                    <a class="name" href="/">{{post.author}}</a>
                     
                     <span class="date" data-time="{{ post.create_time}}"><span class="from">{{ post.create_time}}</span></span>
                     
@@ -27,9 +29,8 @@
                 <article class="content">{{ post.body | safe}}
 </article>
                 <section class="author">
-                    <div class="avatar" style="background-image: url(/blog/images/avatar.jpg);"></div>
-                    <a class="name" href="/blog/about.me.html">{{post.author}}</a>
-                    <div class="intro">程序员，关注设计与二次元</div>
+                    <a class="name" href="/">{{post.author}}</a>
+                    <div class="intro">Python死忠粉-敲Python代码就像在沐浴阳光</div>
                 </section>
                 <section class="recommend">
                     

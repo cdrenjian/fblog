@@ -1,3 +1,4 @@
+#coding:utf-8
 """
 Django settings for rblog project.
 
@@ -23,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'r5cw0pki-q83ykeb$l2b@a(x1vd5q)jvp*q0darmj@p_3j0r))'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1","localhost",".wadong.net"]    #域名加. 表示允许所有子域名
 
@@ -118,7 +119,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR,'static1')
 STATIC_URL = '/static/'
 STATICFILES_DIRS=(
     os.path.join(BASE_DIR, "static"),
